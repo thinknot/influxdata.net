@@ -4,6 +4,7 @@ using InfluxData.Net.Common.Infrastructure;
 using InfluxData.Net.InfluxDb.Models;
 using InfluxData.Net.InfluxDb.Models.Responses;
 using InfluxData.Net.Common.Constants;
+using InfluxData.Net.InfluxDb.Formatters;
 
 namespace InfluxData.Net.InfluxDb.ClientModules
 {
@@ -74,5 +75,16 @@ namespace InfluxData.Net.InfluxDb.ClientModules
         /// <param name="precision">InfluxDb time precision to use (defaults to 'ms')</param>
         /// <returns></returns>
         Task<IInfluxDataApiResponse> WriteAsync(IEnumerable<Point> points, string dbName = null, string retentionPolicy = null, string precision = TimeUnit.Milliseconds);
+
+        /// <summary>
+        /// Writes multiple serie points to the database.
+        /// </summary>
+        /// <param name="points">A serie <see cref="Array" />.</param>
+        /// <param name="formatter">A serie <see cref="Array" />.</param>
+        /// <param name="dbName">Database name.</param>
+        /// <param name="retentionPolicy">The retention policy.</param>
+        /// <param name="precision">InfluxDb time precision to use (defaults to 'ms')</param>
+        /// <returns></returns>
+        Task<IInfluxDataApiResponse> WriteAsync(IEnumerable<Point> points, IPointFormatter formatter, string dbName = null, string retentionPolicy = null, string precision = TimeUnit.Milliseconds);
     }
 }

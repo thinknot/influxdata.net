@@ -9,6 +9,7 @@ using InfluxData.Net.Common.Constants;
 
 namespace InfluxData.Net.InfluxDb.Formatters
 {
+
     public class PointFormatter : IPointFormatter
     {
         /// <summary>
@@ -100,7 +101,6 @@ namespace InfluxData.Net.InfluxDb.Formatters
             Validate.IsNotNull(value, "value");
 
             var result = value.ToString();
-
             if (value.GetType() == typeof(string))
             {
                 // Surround strings with quotes
@@ -134,6 +134,10 @@ namespace InfluxData.Net.InfluxDb.Formatters
             {
                 // Int requires 'i' at the end of the number - otherwise it will be represented as float
                 result = ToInt(result);
+            }
+            else
+            {
+                result = QuoteFieldStringValue(result);
             }
 
             return $"{EscapeTagOrKeyValue(key)}={result}";
@@ -179,6 +183,8 @@ namespace InfluxData.Net.InfluxDb.Formatters
         {
             Validate.IsNotNull(value, "value");
 
+            value = EscapeTagOrKeyValue(value.TrimStart('"').TrimEnd('"').Replace("\"", "\\\""));
+           
             return $"\"{value}\"";
         }
     }

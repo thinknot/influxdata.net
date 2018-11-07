@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace InfluxData.Net.Common.Helpers
 {
@@ -85,7 +86,8 @@ namespace InfluxData.Net.Common.Helpers
         /// <returns>Comma separated collection as a string.</returns>
         public static string ToCommaSeparatedString(this IEnumerable<string> items)
         {
-            return String.Join(",", items);
+            var nonNullItems = items.Where(c => !string.IsNullOrWhiteSpace(c));
+            return String.Join(",", nonNullItems);
         }
 
         /// <summary>
@@ -95,7 +97,9 @@ namespace InfluxData.Net.Common.Helpers
         /// <returns>Comma-space separated collection as a string.</returns>
         public static string ToCommaSpaceSeparatedString(this IEnumerable<string> items)
         {
-            return String.Join(", ", items);
+
+            var nonNullItems = items.Where(c => !string.IsNullOrWhiteSpace(c));
+            return String.Join(", ", nonNullItems);
         }
 
         /// <summary>
