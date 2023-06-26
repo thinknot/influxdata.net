@@ -198,3 +198,4 @@ FakesAssemblies/
 # DotNet Core
 project.lock.json
 ./vs
+/nuget.exe
