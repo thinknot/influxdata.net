@@ -168,7 +168,7 @@ namespace InfluxData.Net.Integration.InfluxDb.Tests
 
             Func<Task> act = async () => { await _fixture.Sut.Client.WriteAsync(points, _fixture.DbName); };
 
-            act.ShouldThrow<InfluxDataApiException>();
+            act.Should().ThrowAsync<InfluxDataApiException>();
         }
 
         [Fact]
@@ -176,7 +176,7 @@ namespace InfluxData.Net.Integration.InfluxDb.Tests
         {
             Func<Task> act = async () => { await _fixture.Sut.Client.QueryAsync(_fixture.DbName, "blah"); };
 
-            act.ShouldThrow<InfluxDataApiException>();
+            act.Should().ThrowAsync<InfluxDataApiException>();
         }
 
         [Fact]
