@@ -48,7 +48,7 @@ namespace InfluxData.Net.Integration.Kapacitor.Tests
                 }
             };
 
-            string kapacitorUrl = ConfigurationManager.Get("KapacitorEndpointUri_v_1_0_0");
+            string kapacitorUrl = ConfigurationManager.Get("KapacitorEndpointUri");
             var content = JsonConvert.SerializeObject(defineTemplateDictionary);
             HttpClient client = new HttpClient();
             await client.PostAsync(String.Format("{0}/kapacitor/v1/templates", kapacitorUrl), new StringContent(content));
