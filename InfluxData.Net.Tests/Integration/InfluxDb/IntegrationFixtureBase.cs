@@ -28,9 +28,9 @@ namespace InfluxData.Net.Integration.InfluxDb
             this.Sut.Should().NotBeNull();
         }
 
-        public void Dispose()
-        {
-        }
+        //public void Dispose()
+        //{
+        //}
 
         #region Validation
 

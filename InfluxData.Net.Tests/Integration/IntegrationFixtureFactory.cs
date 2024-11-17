@@ -73,10 +73,11 @@ namespace InfluxData.Net.Integration.Kapacitor
             createDbResponse.Success.Should().BeTrue();
         }
 
-        public async Task DropDatabase(string dbName)
+        public Task DropDatabase(string dbName)
         {
-            var deleteResponse = this.InfluxDbClient.Database.DropDatabaseAsync(dbName).Result;
+            var deleteResponse = InfluxDbClient.Database.DropDatabaseAsync(dbName).Result;
             deleteResponse.Success.Should().BeTrue();
+            return Task.CompletedTask;
         }
 
         private async Task PurgeFakeDatabases()

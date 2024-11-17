@@ -127,7 +127,7 @@ namespace InfluxData.Net.Integration.InfluxDb.Tests
         {
             Func<Task> act = async () => { await _fixture.Sut.ContinuousQuery.DeleteContinuousQueryAsync(_fixture.DbName, "nonexistingcqname"); };
 
-            act.Should().ThrowAsync<InfluxDataApiException>();
+            await act.Should().ThrowAsync<InfluxDataApiException>();
         }
 
         [Fact]

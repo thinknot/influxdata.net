@@ -114,7 +114,7 @@ namespace InfluxData.Net.Tests.InfluxDb.Helpers
                 firstSerie
             };
 
-            Assert.Throws(typeof(FormatException), () => series.As<StronglyTypedSerie>().ToList());
+            Assert.Throws<FormatException>(() => series.As<StronglyTypedSerie>().ToList());
         }
       
         private class StronglyTypedSerie

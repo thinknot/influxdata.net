@@ -12,7 +12,7 @@ namespace InfluxData.Net.Integration.Kapacitor
 
         bool VerifyAll { get; set; }
 
-        void Dispose();
+        //void Dispose();
 
         // Per-test
         void TestSetup();

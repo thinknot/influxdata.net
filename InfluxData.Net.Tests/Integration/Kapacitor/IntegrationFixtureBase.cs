@@ -29,7 +29,7 @@ namespace InfluxData.Net.Integration.Kapacitor
             this.Sut.Should().NotBeNull();
         }
 
-        public void Dispose()
+        new public void Dispose()
         {
             Task.Run(() => this.PurgeFakeTasks()).Wait();
         }

@@ -58,7 +58,7 @@ namespace InfluxData.Net.Tests
 
             Func<string> act = () => { return queryTemplate.BuildQuery(parameters); };
 
-            Assert.Throws(typeof(NotSupportedException), act);
+            Assert.Throws<NotSupportedException>(act);
         }
 
         // TODO: requires improvement
