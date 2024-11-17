@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;net481</TargetFrameworks>
     <AssemblyVersion>2018.11.28.31312</AssemblyVersion>
     <FileVersion>2018.11.28.31312</FileVersion>
     <Version>1.0.1</Version>

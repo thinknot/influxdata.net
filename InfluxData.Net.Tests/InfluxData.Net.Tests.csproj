@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <!-- <TargetFramework>net461</TargetFramework> -->
-	  <TargetFrameworks>netstandard2.0;net481</TargetFrameworks>
+	  <TargetFrameworks>net481</TargetFrameworks>
     <Version>1.0.1</Version>
   </PropertyGroup>
 
@@ -13,7 +13,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="Moq" Version="4.20.72" />
-    <PackageReference Include="xunit" Version="2.3.0" />
     <PackageReference Include="xunit.runner.console" Version="2.9.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
