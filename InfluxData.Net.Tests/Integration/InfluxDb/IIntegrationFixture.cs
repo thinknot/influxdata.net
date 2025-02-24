@@ -13,7 +13,7 @@ namespace InfluxData.Net.Integration.InfluxDb
     {
         IInfluxDbClient Sut { get; set; }
 
-        void Dispose();
+        //void Dispose();
 
         #region Validation
 

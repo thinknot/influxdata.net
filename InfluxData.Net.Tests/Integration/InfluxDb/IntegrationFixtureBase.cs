@@ -28,9 +28,9 @@ namespace InfluxData.Net.Integration.InfluxDb
             this.Sut.Should().NotBeNull();
         }
 
-        public void Dispose()
-        {
-        }
+        //public void Dispose()
+        //{
+        //}
 
         #region Validation
 
@@ -67,8 +67,8 @@ namespace InfluxData.Net.Integration.InfluxDb
             serie.Should().NotBeNull();
             serie.Name.Should().Be(expectedSerie.Name);
             serie.Tags.Count.Should().Be(expectedSerie.Tags.Count);
-            serie.Tags.ShouldAllBeEquivalentTo(expectedSerie.Tags);
-            serie.Columns.ShouldAllBeEquivalentTo(expectedSerie.Columns);
+            serie.Tags.Should().AllBeEquivalentTo(expectedSerie.Tags);
+            serie.Columns.Should().AllBeEquivalentTo(expectedSerie.Columns);
             serie.Columns.Count().Should().Be(expectedSerie.Columns.Count());
             serie.Values[0].Count().Should().Be(expectedSerie.Values[0].Count());
 

@@ -106,10 +106,10 @@ namespace InfluxData.Net.Integration.InfluxDb.Tests
             batchWriter.Start(1500);
 
             var thread1Points = _fixture.MockPoints(10);
-            Task.Run(() => batchWriter.AddPoints(thread1Points)).Wait();
+            await Task.Run(() => batchWriter.AddPoints(thread1Points));
 
             var thread2Points = _fixture.MockPoints(10);
-            Task.Run(() => batchWriter.AddPoints(thread2Points)).Wait();
+            await Task.Run(() => batchWriter.AddPoints(thread2Points));
 
             await Task.Delay(2000);
 
@@ -119,7 +119,7 @@ namespace InfluxData.Net.Integration.InfluxDb.Tests
             result.Last().Series.Should().HaveCount(10);
 
             var thread3Point = _fixture.MockPoints(1).First();
-            Task.Run(() => batchWriter.AddPoint(thread3Point)).Wait();
+            await Task.Run(() => batchWriter.AddPoint(thread3Point));
 
             await Task.Delay(2000);
 
@@ -140,7 +140,7 @@ namespace InfluxData.Net.Integration.InfluxDb.Tests
             batchWriter.OnError += (sender, e) => errorRaised = true;
 
             var points = _fixture.MockPoints(1);
-            Task.Run(() => batchWriter.AddPoints(points)).Wait();
+            await Task.Run(() => batchWriter.AddPoints(points));
 
             await Task.Delay(1500);
 

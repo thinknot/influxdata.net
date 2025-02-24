@@ -67,7 +67,7 @@ namespace InfluxData.Net.Integration.InfluxDb.Tests
         {
             var points = _fixture.MockPoints(5);
 
-            var writeResponse = await _fixture.Sut.Client.WriteAsync(points, _fixture.DbName);
+            var writeResponse = await _fixture.Sut.Client.WriteAsync(points, _fixture.DbName, retentionPolicy: "autogen");
 
             writeResponse.Success.Should().BeTrue();
             await _fixture.EnsureValidPointCount(points.First().Name, points.First().Fields.First().Key, 5);
@@ -79,7 +79,7 @@ namespace InfluxData.Net.Integration.InfluxDb.Tests
         {
             var point = _fixture.MockPoints(1).Single();
 
-            var writeResponse = await _fixture.Sut.Client.WriteAsync(point, _fixture.DbName, precision: TimeUnit.Hours);
+            var writeResponse = await _fixture.Sut.Client.WriteAsync(point, _fixture.DbName, retentionPolicy: "autogen", precision: TimeUnit.Hours);
             writeResponse.Success.Should().BeTrue();
             await _fixture.EnsureValidPointCount(point.Name, point.Fields.First().Key, 1);
             var serie = await _fixture.EnsurePointExists(point, TimeUnit.Hours);
@@ -94,7 +94,7 @@ namespace InfluxData.Net.Integration.InfluxDb.Tests
         {
             var point = _fixture.MockPoints(1).Single();
 
-            var writeResponse = await _fixture.Sut.Client.WriteAsync(point, _fixture.DbName, precision: TimeUnit.Minutes);
+            var writeResponse = await _fixture.Sut.Client.WriteAsync(point, _fixture.DbName, retentionPolicy: "autogen", precision: TimeUnit.Minutes);
             writeResponse.Success.Should().BeTrue();
             await _fixture.EnsureValidPointCount(point.Name, point.Fields.First().Key, 1);
             var serie = await _fixture.EnsurePointExists(point, TimeUnit.Minutes);
@@ -129,7 +129,7 @@ namespace InfluxData.Net.Integration.InfluxDb.Tests
         {
             var point = _fixture.MockPoints(1).Single();
 
-            var writeResponse = await _fixture.Sut.Client.WriteAsync(point, _fixture.DbName, precision: TimeUnit.Milliseconds);
+            var writeResponse = await _fixture.Sut.Client.WriteAsync(point, _fixture.DbName, retentionPolicy: "autogen", precision: TimeUnit.Milliseconds);
             writeResponse.Success.Should().BeTrue();
             await _fixture.EnsureValidPointCount(point.Name, point.Fields.First().Key, 1);
             var serie = await _fixture.EnsurePointExists(point, TimeUnit.Milliseconds);
@@ -168,7 +168,7 @@ namespace InfluxData.Net.Integration.InfluxDb.Tests
 
             Func<Task> act = async () => { await _fixture.Sut.Client.WriteAsync(points, _fixture.DbName); };
 
-            act.ShouldThrow<InfluxDataApiException>();
+            act.Should().ThrowAsync<InfluxDataApiException>();
         }
 
         [Fact]
@@ -176,7 +176,7 @@ namespace InfluxData.Net.Integration.InfluxDb.Tests
         {
             Func<Task> act = async () => { await _fixture.Sut.Client.QueryAsync(_fixture.DbName, "blah"); };
 
-            act.ShouldThrow<InfluxDataApiException>();
+            act.Should().ThrowAsync<InfluxDataApiException>();
         }
 
         [Fact]

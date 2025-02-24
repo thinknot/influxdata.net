@@ -8,7 +8,7 @@ namespace InfluxData.Net.Integration.Kapacitor
     {
         IKapacitorClient Sut { get; set; }
 
-        void Dispose();
+        //void Dispose();
 
         string CreateRandomTaskId();
 
